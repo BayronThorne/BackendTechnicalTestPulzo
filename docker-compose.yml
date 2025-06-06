@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  auth:
+    build:
+      context: .
+      dockerfile: ./auth/Dockerfile
+    environment:
+      - AUTH_PORT=${AUTH_PORT}
+    ports:
+      - "8080:${AUTH_PORT}"
+
+  datafetcher:
+    build:
+      context: .
+      dockerfile: ./datafetcher/Dockerfile
+    ports:
+      - "8081:8081"
